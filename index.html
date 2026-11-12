@@ -400,11 +400,16 @@ function exportExcel(){
  toast('تم تصدير ملف متوافق مع Excel');
 }
 function downloadBlob(blob,name){
+ if(window.SecureBookApp&&SecureBookApp.saveFile){
+  const r=new FileReader();
+  r.onloadend=()=>SecureBookApp.saveFile(String(r.result).split(',')[1],blob.type||'application/octet-stream',name);
+  r.readAsDataURL(blob);return;
+ }
  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
 }
 function printReport(){
  if(!devices.length){toast('لا توجد بيانات لإنشاء التقرير');return}
- logAction('إنشاء تقرير للطباعة','تقرير مراجعة الأجهزة');persist();window.print();
+ logAction('إنشاء تقرير للطباعة','تقرير مراجعة الأجهزة');persist();(window.SecureBookApp&&SecureBookApp.print)?SecureBookApp.print():window.print();
 }
 function backupJSON(){
  const data={application:'SecureBook',version:'3.0',exportedAt:new Date().toISOString(),devices,logs};
