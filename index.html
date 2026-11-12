@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1530">
 <title>SecureBook | لوحة أمان الحساب</title>
-<script>try{var t=localStorage.getItem('securebook_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem('securebook_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;var l=localStorage.getItem('securebook_lang');if(l==='en'||l==='fr'){document.documentElement.lang=l;document.documentElement.dir='ltr'}}catch(e){}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6bff'/%3E%3Cstop offset='1' stop-color='%2319c3d3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 3l25 9v18c0 15-10 25-25 31C17 55 7 45 7 30V12z' fill='url(%23g)'/%3E%3Cpath d='M17 26q7-3 15 1q8-4 15-1v17q-7-3-15 1q-8-4-15-1z' fill='%23fff'/%3E%3Cpath d='M32 27v17' stroke='%232f6bff' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -120,7 +120,7 @@ tbody tr:hover{background:#f9fbff}
  .sidebar{position:fixed;top:auto;bottom:0;right:0;left:0;height:auto;z-index:8;padding:6px 8px calc(6px + env(safe-area-inset-bottom));flex-direction:row;gap:0;border-top:1px solid #2a3f73;background:var(--navy)}
  .brand,.nav-label,.side-note{display:none}.nav{display:flex;width:100%;justify-content:space-around}
  .nav button{flex:1;flex-direction:column;gap:4px;padding:8px 4px;font-size:12px;align-items:center;justify-content:center;text-align:center}.nav button.active,.nav button:hover{box-shadow:none}
- .mlogo{display:block!important}.top-actions .ver,#todayTxt{display:none}.tb-l p:after{content:"إدارة الأجهزة المسجلة"}
+ .mlogo{display:block!important}.top-actions .ver,#todayTxt{display:none}
  thead{display:none}table,tbody,tr,td{display:block;white-space:normal}
  tr{border:1px solid var(--line);border-radius:14px;padding:6px 14px;margin-bottom:10px;background:var(--card)}
  td{border:0!important;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0}
@@ -221,6 +221,36 @@ tbody tr:hover{background:#f9fbff}
  .toast{bottom:104px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.lang{position:relative}
+.lang-menu{position:absolute;top:calc(100% + 10px);inset-inline-end:0;min-width:160px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:6px;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.96);transform-origin:top;transition:.25s;z-index:20}
+.lang-menu.show{opacity:1;visibility:visible;transform:none}
+.lang-menu button{display:block;width:100%;border:0;background:transparent;color:var(--text);padding:11px 14px;border-radius:10px;font-weight:600;text-align:start}
+.lang-menu button:hover{background:#f0f4fb}.lang-menu button.on{background:#e8efff;color:var(--blue)}
+[data-theme=dark] .lang-menu button:hover{background:#16295a}[data-theme=dark] .lang-menu button.on{background:#16295a;color:#8fb3ff}
+.dr-lang{display:none}
+html[dir=ltr] th{text-align:left}
+html[dir=ltr] th:first-child{border-radius:10px 0 0 10px}html[dir=ltr] th:last-child{border-radius:0 10px 10px 0}
+html[dir=ltr] .nav button,html[dir=ltr] .dr-list>*{text-align:left}
+html[dir=ltr] .brand small{text-align:left}
+html[dir=ltr] .event:not(:last-child):before{right:auto;left:17px}
+html[dir=ltr] .notice{border-right:1px solid #d9e6ff;border-left:4px solid var(--blue)}
+html[dir=ltr][data-theme=dark] .notice{border-color:var(--line);border-left-color:var(--blue)}
+html[dir=ltr] .hero:after{left:auto;right:-60px}
+html[dir=ltr] .toast{left:auto;right:22px;border-right:0;border-left:4px solid var(--cyan)}
+html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:after{left:21px}
+@media(min-width:721px){html[dir=ltr] .nav button.active,html[dir=ltr] .nav button:hover{box-shadow:inset 3px 0 0 var(--cyan)}}
+@media(max-width:720px){
+ .tb-l p:after{content:attr(data-sub)!important}
+ .dr-lang{display:flex;gap:8px;padding:6px 14px!important}
+ .dr-lang button{flex:1;border:1px solid #ffffff2a;background:transparent;color:#cfdcf5;padding:10px 4px;border-radius:12px;font-weight:700;font-size:14px}
+ .dr-lang button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+ html[dir=ltr] .drawer{right:auto;left:0;transform:translateX(-105%);border-radius:0 26px 26px 0;box-shadow:20px 0 60px #0007}
+ html[dir=ltr] .drawer.open{transform:none}
+ html[dir=ltr] .dr-list>*{transform:translateX(-26px)}html[dir=ltr] .drawer.open .dr-list>*{transform:none}
+ html[dir=ltr] .fab{left:auto;right:18px}
+ html[dir=ltr] .toast{left:12px;right:12px;border-left:0}
+}
 </style>
 </head>
 <body>
@@ -243,6 +273,7 @@ tbody tr:hover{background:#f9fbff}
  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M8 16L18 6M9 6h9v9"/></symbol>
  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.5"/></symbol>
+ <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
@@ -263,7 +294,7 @@ tbody tr:hover{background:#f9fbff}
  <main class="main">
   <div class="topbar">
    <div class="tb-l"><button class="icon-btn tbtn burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button><svg class="logo mlogo"><use href="#logo"/></svg><div><h2>مركز متابعة الأمان</h2><p id="todayTxt">إدارة ومراجعة الأجهزة المسجلة يدوياً</p></div></div>
-   <div class="top-actions"><span class="ver">الإصدار 3.0</span><button class="icon-btn tbtn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي"><svg class="i"><use id="themeUse" href="#i-moon"/></svg></button><div class="avatar">S</div></div>
+   <div class="top-actions"><span class="ver">الإصدار 3.0</span><div class="lang"><button class="icon-btn tbtn" id="langBtn" aria-label="Language"><svg class="i"><use href="#i-globe"/></svg></button><div class="lang-menu" id="langMenu"><button data-lang="ar">العربية</button><button data-lang="en">English</button><button data-lang="fr">Français</button></div></div><button class="icon-btn tbtn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي"><svg class="i"><use id="themeUse" href="#i-moon"/></svg></button><div class="avatar">S</div></div>
   </div>
   <div class="content">
    <section class="hero">
@@ -341,6 +372,7 @@ tbody tr:hover{background:#f9fbff}
   <button data-t="devicesPanel"><svg class="i"><use href="#i-device"/></svg> سجل الأجهزة</button>
   <button data-t="timelinePanel"><svg class="i"><use href="#i-clock"/></svg> سجل المراجعات</button>
   <button data-t="add"><svg class="i"><use href="#i-plus"/></svg> إضافة جهاز</button>
+  <div class="dr-lang"><button data-lang="ar">العربية</button><button data-lang="en">English</button><button data-lang="fr">Français</button></div>
   <div class="dr-sep"></div>
   <button onclick="toggleTheme()"><svg class="i"><use href="#i-moon"/></svg> الوضع الليلي <span class="sw"></span></button>
   <a target="_blank" rel="noopener" href="https://accountscenter.facebook.com/password_and_security/login_activity"><svg class="i"><use href="#i-ext"/></svg> نشاط تسجيل الدخول</a>
@@ -356,7 +388,7 @@ tbody tr:hover{background:#f9fbff}
    <div class="modal-body">
     <div class="form-grid">
      <div class="field"><label for="fName">اسم الجهاز *</label><input id="fName" required maxlength="80" placeholder="مثلاً: Samsung Galaxy"></div>
-     <div class="field"><label for="fType">نوع الجهاز</label><select id="fType"><option>هاتف</option><option>حاسوب</option><option>لوحي</option><option>متصفح آخر</option><option>غير محدد</option></select></div>
+     <div class="field"><label for="fType">نوع الجهاز</label><select id="fType"><option value="هاتف">هاتف</option><option value="حاسوب">حاسوب</option><option value="لوحي">لوحي</option><option value="متصفح آخر">متصفح آخر</option><option value="غير محدد">غير محدد</option></select></div>
      <div class="field"><label for="fLocation">الموقع *</label><input id="fLocation" required maxlength="100" placeholder="المدينة أو البلد"></div>
      <div class="field"><label for="fDate">تاريخ آخر نشاط *</label><input id="fDate" type="date" required></div>
      <div class="field full"><label for="fStatus">حالة الجهاز</label><select id="fStatus"><option value="موثوق">موثوق</option><option value="يحتاج مراجعة">يحتاج مراجعة</option><option value="غير معروف">غير معروف</option></select></div>
@@ -372,6 +404,12 @@ tbody tr:hover{background:#f9fbff}
 <script>
 const STORAGE_KEY='securebook_v2_devices';
 const LOG_KEY='securebook_v2_logs';
+let LANG='ar';try{LANG=localStorage.getItem('securebook_lang')||'ar'}catch(e){}
+if(!['ar','en','fr'].includes(LANG))LANG='ar';
+const LOCS={ar:'ar-DZ',en:'en-GB',fr:'fr-FR'},LOC=()=>LOCS[LANG],I18N={};
+[["SecureBook | لوحة أمان الحساب","SecureBook | Account Security Dashboard","SecureBook | Tableau de bord de sécurité"],["لوحة التحكم","Dashboard","Tableau de bord"],["سجل الأجهزة","Device log","Journal des appareils"],["المراجعات","Reviews","Révisions"],["إضافة","Add","Ajouter"],["سجل المراجعات","Review log","Journal des révisions"],["إضافة جهاز","Add device","Ajouter un appareil"],["القائمة الرئيسية","Main menu","Menu principal"],["الخصوصية أولاً","Privacy first","La confidentialité d’abord"],["بياناتك محفوظة محلياً في هذا المتصفح. لا نطلب كلمة مرور Facebook أو رموز التحقق.","Your data is stored locally in this browser. We never ask for your Facebook password or verification codes.","Vos données sont enregistrées localement dans ce navigateur. Nous ne demandons jamais votre mot de passe Facebook ni vos codes de vérification."],["مركز متابعة الأمان","Security Monitoring Center","Centre de suivi de la sécurité"],["إدارة ومراجعة الأجهزة المسجلة يدوياً","Manage and review manually logged devices","Gérez et vérifiez les appareils saisis manuellement"],["إدارة الأجهزة المسجلة","Manage logged devices","Gérer les appareils enregistrés"],["الإصدار 3.0","Version 3.0","Version 3.0"],["مرحباً بك في SecureBook","Welcome to SecureBook","Bienvenue sur SecureBook"],["تابع مراجعات أمان حسابك ونظّم الأجهزة التي تحققت منها في لوحة واحدة واضحة.","Track your account security reviews and organize the devices you have verified in one clear dashboard.","Suivez les vérifications de sécurité de votre compte et organisez les appareils contrôlés dans un seul tableau de bord clair."],["تصدير Excel","Export Excel","Exporter Excel"],["تقرير PDF","PDF report","Rapport PDF"],["مؤشر الأجهزة الموثوقة","Trusted devices index","Indice des appareils fiables"],["لا توجد بيانات","No data","Aucune donnée"],["وضع ممتاز","Excellent","Excellent"],["يحتاج متابعة","Needs follow-up","À surveiller"],["يحتاج مراجعة عاجلة","Needs urgent review","Révision urgente requise"],["تنبيه:","Notice:","Attention :"],["لا يستطيع SecureBook قراءة جلسات Facebook تلقائياً. افتح مركز الحسابات الرسمي لمراجعة الأجهزة، ثم دوّن المعلومات هنا. لا تدخل كلمة المرور أو رموز التحقق في هذا التطبيق.","SecureBook cannot read your Facebook sessions automatically. Open the official Accounts Center to review your devices, then note the details here. Never enter your password or verification codes in this app.","SecureBook ne peut pas lire automatiquement vos sessions Facebook. Ouvrez le Centre de comptes officiel pour vérifier vos appareils, puis notez les informations ici. N’entrez jamais votre mot de passe ni vos codes de vérification dans cette application."],["إجمالي الأجهزة المسجلة","Total logged devices","Total des appareils"],["في سجل المراجعة المحلي","In the local review log","Dans le journal local"],["أجهزة موثوقة","Trusted devices","Appareils fiables"],["تم التحقق منها","Verified","Vérifiés"],["تحتاج مراجعة","Need review","À vérifier"],["تحتاج إلى تحقق إضافي","Need extra verification","Vérification supplémentaire requise"],["أجهزة غير معروفة","Unknown devices","Appareils inconnus"],["تحقق منها عبر Facebook","Check them via Facebook","À contrôler via Facebook"],["الأجهزة التي أضفتها يدوياً بعد مراجعة حسابك","Devices you added manually after reviewing your account","Appareils ajoutés manuellement après la vérification de votre compte"],["جديد","New","Nouveau"],["ابحث باسم الجهاز أو الموقع...","Search by device name or location...","Rechercher par appareil ou lieu..."],["كل الحالات","All statuses","Tous les statuts"],["موثوق","Trusted","Fiable"],["يحتاج مراجعة","Needs review","À vérifier"],["غير معروف","Unknown","Inconnu"],["الجهاز","Device","Appareil"],["الموقع","Location","Lieu"],["آخر نشاط","Last activity","Dernière activité"],["الحالة","Status","Statut"],["إجراءات","Actions","Actions"],["لا توجد أجهزة بعد. أضف أول جهاز بعد مراجعة جلسات حسابك.","No devices yet. Add your first device after reviewing your account sessions.","Aucun appareil pour l’instant. Ajoutez le premier après avoir vérifié vos sessions."],["آخر الأنشطة المسجلة داخل التطبيق","Latest activity recorded in the app","Dernières activités enregistrées dans l’application"],["لا توجد مراجعات مسجلة بعد.","No reviews recorded yet.","Aucune révision enregistrée."],["مركز الأمان الرسمي","Official Security Center","Centre de sécurité officiel"],["روابط Facebook الرسمية","Official Facebook links","Liens officiels Facebook"],["الأجهزة ومواقع تسجيل الدخول","Devices and login locations","Appareils et lieux de connexion"],["راجع الجلسات والأجهزة من مركز حسابات Meta.","Review sessions and devices from Meta Accounts Center.","Vérifiez les sessions et appareils depuis le Centre de comptes Meta."],["فتح نشاط تسجيل الدخول","Open login activity","Ouvrir l’activité de connexion"],["نشاط تسجيل الدخول","Login activity","Activité de connexion"],["كلمة المرور والمصادقة الثنائية","Password and two-factor authentication","Mot de passe et double authentification"],["استخدم كلمة مرور فريدة وفعّل المصادقة الثنائية.","Use a unique password and enable two-factor authentication.","Utilisez un mot de passe unique et activez la double authentification."],["إعدادات الأمان","Security settings","Paramètres de sécurité"],["النسخ الاحتياطي","Backup","Sauvegarde"],["احتفظ بنسخة من سجل المراجعة","Keep a copy of your review log","Conservez une copie de votre journal"],["تصدير نسخة JSON","Export JSON backup","Exporter une sauvegarde JSON"],["استيراد نسخة","Import backup","Importer une sauvegarde"],["إضافة جهاز إلى السجل","Add a device to the log","Ajouter un appareil au journal"],["تعديل بيانات الجهاز","Edit device details","Modifier l’appareil"],["اسم الجهاز *","Device name *","Nom de l’appareil *"],["نوع الجهاز","Device type","Type d’appareil"],["الموقع *","Location *","Lieu *"],["تاريخ آخر نشاط *","Last activity date *","Date de dernière activité *"],["حالة الجهاز","Device status","Statut de l’appareil"],["ملاحظات (اختياري)","Notes (optional)","Notes (facultatif)"],["مثلاً: Samsung Galaxy","e.g. Samsung Galaxy","ex. : Samsung Galaxy"],["المدينة أو البلد","City or country","Ville ou pays"],["مثلاً: تمت مراجعته من مركز الحسابات","e.g. Reviewed from Accounts Center","ex. : vérifié depuis le Centre de comptes"],["هاتف","Phone","Téléphone"],["حاسوب","Computer","Ordinateur"],["لوحي","Tablet","Tablette"],["متصفح آخر","Other browser","Autre navigateur"],["غير محدد","Unspecified","Non précisé"],["حفظ البيانات","Save","Enregistrer"],["إلغاء","Cancel","Annuler"],["لوحة مستقلة لتنظيم ومتابعة مراجعات أمان الحسابات والأجهزة، تعمل بالكامل داخل متصفحك.","An independent dashboard to organize and track account and device security reviews, running entirely in your browser.","Un tableau de bord indépendant pour organiser et suivre les vérifications de sécurité des comptes et appareils, entièrement dans votre navigateur."],["التنقل","Navigation","Navigation"],["روابط رسمية","Official links","Liens officiels"],["الخصوصية","Privacy","Confidentialité"],["لا نجمع أي بيانات ولا نطلب كلمات المرور أو رموز التحقق. كل المعلومات محفوظة محلياً.","We collect no data and never ask for passwords or verification codes. Everything is stored locally.","Nous ne collectons aucune donnée et ne demandons jamais de mots de passe ni de codes. Tout est enregistré localement."],["SecureBook · الإصدار 3.0","SecureBook · Version 3.0","SecureBook · Version 3.0"],["تطبيق مستقل غير تابع لشركة Meta أو Facebook","Independent app, not affiliated with Meta or Facebook","Application indépendante, non affiliée à Meta ou Facebook"],["الوضع الليلي","Dark mode","Mode sombre"],["القائمة","Menu","Menu"],["تبديل الوضع الليلي","Toggle dark mode","Basculer le mode sombre"],["تعديل","Edit","Modifier"],["حذف","Delete","Supprimer"],["تم حفظ البيانات بنجاح","Saved successfully","Enregistré avec succès"],["تم حذف السجل","Record deleted","Enregistrement supprimé"],["لا توجد بيانات للتصدير","No data to export","Aucune donnée à exporter"],["تم تصدير ملف متوافق مع Excel","Excel-compatible file exported","Fichier compatible Excel exporté"],["لا توجد بيانات لإنشاء التقرير","No data to create the report","Aucune donnée pour le rapport"],["تم إنشاء النسخة الاحتياطية","Backup created","Sauvegarde créée"],["تم استيراد النسخة بنجاح","Backup imported successfully","Sauvegarde importée avec succès"],["ملف النسخة الاحتياطية غير صالح","Invalid backup file","Fichier de sauvegarde invalide"],["هل تريد حذف سجل هذا الجهاز؟","Delete this device record?","Supprimer l’enregistrement de cet appareil ?"],["سيتم استبدال السجلات الحالية بالنسخة المستوردة. متابعة؟","Current records will be replaced by the imported backup. Continue?","Les enregistrements actuels seront remplacés par la sauvegarde importée. Continuer ?"],["تعديل بيانات جهاز","Device updated","Appareil modifié"],["حذف سجل جهاز","Device record deleted","Appareil supprimé"],["إنشاء تقرير للطباعة","Print report created","Rapport d’impression créé"],["تقرير مراجعة الأجهزة","Device review report","Rapport de vérification des appareils"],["اسم الجهاز","Device name","Nom de l’appareil"],["النوع","Type","Type"],["تاريخ آخر نشاط","Last activity date","Date de dernière activité"],["ملاحظات","Notes","Notes"]].forEach(r=>I18N[r[0]]={en:r[1],fr:r[2]});
+function T(ar){const e=I18N[ar];return LANG!=='ar'&&e?e[LANG]:ar}
+
 let devices=readStore(STORAGE_KEY,[]);
 let logs=readStore(LOG_KEY,[]);
 let editingId=null;
@@ -380,7 +418,7 @@ function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(devices));loc
 function uid(){return 'd'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function logAction(action,detail){logs.unshift({id:uid(),action,detail,date:new Date().toISOString()});logs=logs.slice(0,100)}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function toast(msg){const t=document.getElementById('toast');t.textContent=T(msg);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function openModal(id=null){
  editingId=id;
@@ -416,7 +454,7 @@ function saveDevice(e){
 }
 function deleteDevice(id){
  const d=devices.find(x=>x.id===id);if(!d)return;
- if(!confirm('هل تريد حذف سجل هذا الجهاز؟'))return;
+ if(!confirm(T('هل تريد حذف سجل هذا الجهاز؟')))return;
  devices=devices.filter(x=>x.id!==id);logAction('حذف سجل جهاز',d.name);persist();toast('تم حذف السجل');
 }
 function statusClass(s){return s==='موثوق'?'trusted':s==='غير معروف'?'unknown':'review'}
@@ -436,7 +474,7 @@ function renderDevices(){
   const acts=document.createElement('div');acts.className='row-actions';
   const edit=document.createElement('button');edit.className='icon-btn';edit.innerHTML='<svg class="i"><use href="#i-edit"/></svg>';edit.title='تعديل';edit.onclick=()=>openModal(d.id);
   const del=document.createElement('button');del.className='icon-btn';del.innerHTML='<svg class="i"><use href="#i-trash"/></svg>';del.title='حذف';del.onclick=()=>deleteDevice(d.id);
-  acts.append(edit,del);td5.append(acts);tr.append(td1,td2,td3,td4,td5);['','الموقع','آخر نشاط','الحالة',''].forEach((l,i)=>{if(l)tr.children[i].dataset.l=l});body.append(tr);
+  acts.append(edit,del);td5.append(acts);tr.append(td1,td2,td3,td4,td5);['','الموقع','آخر نشاط','الحالة',''].forEach((l,i)=>{if(l)tr.children[i].dataset.l=T(l)});body.append(tr);
  });
 }
 function renderStats(){
@@ -453,9 +491,9 @@ function renderTimeline(){
   const dot=document.createElement('div');dot.className='event-dot';dot.innerHTML='<svg class="i"><use href="#i-clock"/></svg>';
   const info=document.createElement('div');
   const date=new Date(l.date);
-  const dateText=isNaN(date)?'':date.toLocaleString('ar-DZ');
+  const dateText=isNaN(date)?'':date.toLocaleString(LOC());
   const strong=document.createElement('strong');strong.textContent=l.action;
-  const p=document.createElement('p');p.textContent=l.detail+' · '+dateText;
+  const p=document.createElement('p');p.textContent=T(l.detail)+' · '+dateText;
   info.append(strong,p);div.append(dot,info);box.append(div);
  });
 }
@@ -463,8 +501,8 @@ function renderAll(){renderStats();renderDevices();renderTimeline()}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 function exportExcel(){
  if(!devices.length){toast('لا توجد بيانات للتصدير');return}
- const rows=[['اسم الجهاز','النوع','الموقع','تاريخ آخر نشاط','الحالة','ملاحظات'],
- ...devices.map(d=>[d.name,d.type,d.location,d.date,d.status,d.notes||''])];
+ const rows=[['اسم الجهاز','النوع','الموقع','تاريخ آخر نشاط','الحالة','ملاحظات'].map(T),
+ ...devices.map(d=>[d.name,T(d.type||''),d.location,d.date,T(d.status),d.notes||''])];
  const csv='\uFEFF'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n');
  downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8;'}),'SecureBook_Devices_'+today()+'.csv');
  toast('تم تصدير ملف متوافق مع Excel');
@@ -493,7 +531,7 @@ function importJSON(e){
   try{
    const data=JSON.parse(reader.result);
    if(!Array.isArray(data.devices)||!Array.isArray(data.logs))throw Error('invalid');
-   if(!confirm('سيتم استبدال السجلات الحالية بالنسخة المستوردة. متابعة؟'))return;
+   if(!confirm(T('سيتم استبدال السجلات الحالية بالنسخة المستوردة. متابعة؟')))return;
    devices=data.devices;logs=data.logs;persist();toast('تم استيراد النسخة بنجاح');
   }catch{toast('ملف النسخة الاحتياطية غير صالح')}
   e.target.value='';
@@ -551,6 +589,31 @@ renderStats=function(){
  ids.forEach((id,k)=>{const el=document.getElementById(id);countUp(el,prev[k],+el.textContent)});
 };
 setTimeout(()=>{spy();moveInd()},300);
+const ATTRS=['placeholder','title','aria-label'];
+function trNode(n){const v=n.nodeValue,ar=(n.__tr!==undefined&&v===n.__tr)?n.__ar:v,k=ar.trim(),e=k&&I18N[k];
+ const out=(LANG!=='ar'&&e)?ar.replace(k,()=>e[LANG]):ar;if(out!==v)n.nodeValue=out;n.__ar=ar;n.__tr=out}
+function trEl(el){const o=el.__o||(el.__o={});ATTRS.forEach(a=>{if(!el.hasAttribute(a))return;if(o[a]===undefined)o[a]=el.getAttribute(a);const e=I18N[o[a].trim()];el.setAttribute(a,(LANG!=='ar'&&e)?e[LANG]:o[a])})}
+function trTree(root){
+ if(root.nodeType===3){trNode(root);return}
+ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
+ while(n=w.nextNode()){const p=n.parentNode.nodeName;if(p!=='SCRIPT'&&p!=='STYLE')trNode(n)}
+ [root,...root.querySelectorAll('[placeholder],[title],[aria-label]')].forEach(trEl);
+}
+new MutationObserver(rs=>rs.forEach(r=>{if(r.type==='characterData')trNode(r.target);else r.addedNodes.forEach(n=>{if(n.nodeType===3||n.nodeType===1)trTree(n)})})).observe(document.body,{childList:true,characterData:true,subtree:true});
+function setDate(){document.getElementById('todayTxt').textContent=new Date().toLocaleDateString(LOC(),{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+const langMenu=document.getElementById('langMenu');
+function closeLangMenu(){langMenu.classList.remove('show')}
+function setLang(l){
+ LANG=l;try{localStorage.setItem('securebook_lang',l)}catch(e){}
+ const r=document.documentElement;r.lang=l;r.dir=l==='ar'?'rtl':'ltr';
+ document.title=T('SecureBook | لوحة أمان الحساب');
+ document.querySelector('.tb-l p').dataset.sub=T('إدارة الأجهزة المسجلة');
+ $$('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+ trTree(document.body);setDate();renderAll();closeLangMenu();setTimeout(moveInd,60);
+}
+document.getElementById('langBtn').onclick=e=>{e.stopPropagation();langMenu.classList.toggle('show')};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(b){setLang(b.dataset.lang);return}if(!e.target.closest('.lang'))closeLangMenu()});
+setLang(LANG);
 function setTheme(t){
  document.documentElement.dataset.theme=t;
  try{localStorage.setItem('securebook_theme',t)}catch(e){}
@@ -560,7 +623,7 @@ function setTheme(t){
 function toggleTheme(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
 setTheme(document.documentElement.dataset.theme||'light');
 document.getElementById('yr').textContent=new Date().getFullYear();
-document.getElementById('todayTxt').textContent=new Date().toLocaleDateString('ar-DZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+setDate();
 renderAll();
 </script>
 </body>
