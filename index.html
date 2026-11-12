@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Security Monitor</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Tahoma,Arial;
+ background:#f1f4f9;color:#202b3c
+}
+header{
+ background:#1877f2;color:white;
+ padding:25px 15px;text-align:center
+}
+header h2{margin:8px}
+.container{max-width:850px;margin:25px auto;padding:15px}
+.card{
+ background:white;padding:20px;border-radius:14px;
+ margin-bottom:16px;box-shadow:0 3px 12px #0000000d
+}
+button,.link{
+ display:inline-block;border:0;border-radius:8px;
+ padding:12px 18px;background:#1877f2;
+ color:white;text-decoration:none;cursor:pointer;
+ font-size:14px;margin-top:8px
+}
+input,select{
+ width:100%;padding:12px;margin:8px 0 14px;
+ border:1px solid #ddd;border-radius:8px;
+ font-size:15px
+}
+.device{
+ border:1px solid #eee;padding:13px;
+ border-radius:9px;margin-top:10px
+}
+.status{font-size:13px;color:#16834b}
+.delete{background:#dc3545}
+footer{text-align:center;color:#777;padding:20px}
+</style>
+</head>
+<body>
+
+<header>
+ <h2>🛡️ Facebook Security Monitor</h2>
+ <p>لوحة متابعة وحماية حساب Facebook</p>
+</header>
+
+<div class="container">
+
+ <div class="card">
+  <h3>🔐 مركز أمان Facebook</h3>
+  <p>افتح قائمة الأجهزة والجلسات المسجلة في حسابك.</p>
+  <a class="link"
+  href="https://accountscenter.facebook.com/password_and_security/login_activity"
+  target="_blank" rel="noopener">
+  مراجعة الأجهزة المتصلة
+  </a>
+  <p style="color:#777;font-size:12px">
+  ستحتاج إلى تسجيل الدخول في موقع Facebook الرسمي.
+  </p>
+ </div>
+
+ <div class="card">
+  <h3>📱 سجل الأجهزة التي راجعتها</h3>
+
+  <label>اسم الجهاز</label>
+  <input id="device" placeholder="مثلاً: Samsung Android">
+
+  <label>الموقع</label>
+  <input id="location" placeholder="مثلاً: الجزائر">
+
+  <label>تاريخ آخر نشاط</label>
+  <input id="date" type="date">
+
+  <label>حالة الجهاز</label>
+  <select id="status">
+   <option value="موثوق">موثوق</option>
+   <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+   <option value="غير معروف">غير معروف</option>
+  </select>
+
+  <button onclick="addDevice()">إضافة إلى السجل</button>
+ </div>
+
+ <div class="card">
+  <h3>📋 الأجهزة المسجلة في سجل المراجعة</h3>
+  <div id="devices"></div>
+ </div>
+
+ <div class="card">
+  <h3>⚠️ نصائح الأمان</h3>
+  <ul>
+   <li>استخدم كلمة مرور قوية وفريدة.</li>
+   <li>فعّل المصادقة الثنائية.</li>
+   <li>راجع الأجهزة التي لا تعرفها.</li>
+   <li>سجّل الخروج من الجلسات غير المعروفة عبر Facebook.</li>
+   <li>لا تشارك كلمة المرور أو رموز التحقق.</li>
+  </ul>
+ </div>
+
+</div>
+
+<footer>
+ Facebook Security Monitor - Version 1.0
+</footer>
+
+<script>
+let devices = JSON.parse(
+ localStorage.getItem("securityDevices") || "[]"
+);
+
+function save(){
+ localStorage.setItem(
+  "securityDevices",JSON.stringify(devices)
+ );
+ render();
+}
+
+function addDevice(){
+ const device=document.getElementById("device").value.trim();
+ const location=document.getElementById("location").value.trim();
+ const date=document.getElementById("date").value;
+ const status=document.getElementById("status").value;
+
+ if(!device || !location || !date){
+  alert("يرجى ملء جميع المعلومات");
+  return;
+ }
+
+ devices.push({device,location,date,status});
+ save();
+
+ document.getElementById("device").value="";
+ document.getElementById("location").value="";
+ document.getElementById("date").value="";
+}
+
+function removeDevice(index){
+ if(confirm("هل تريد حذف هذا السجل؟")){
+  devices.splice(index,1);
+  save();
+ }
+}
+
+function render(){
+ const box=document.getElementById("devices");
+ box.innerHTML="";
+
+ if(devices.length===0){
+  box.textContent="لا توجد أجهزة مسجلة في سجل المراجعة.";
+  return;
+ }
+
+ devices.forEach((d,i)=>{
+  const item=document.createElement("div");
+  item.className="device";
+
+  const title=document.createElement("strong");
+  title.textContent="📱 "+d.device;
+
+  const details=document.createElement("p");
+  details.textContent="الموقع: "+d.location+
+   " | التاريخ: "+d.date;
+
+  const state=document.createElement("p");
+  state.className="status";
+  state.textContent="الحالة: "+d.status;
+
+  const del=document.createElement("button");
+  del.className="delete";
+  del.textContent="حذف";
+  del.onclick=()=>removeDevice(i);
+
+  item.append(title,details,state,del);
+  box.appendChild(item);
+ });
+}
+
+render();
+</script>
+
+</body>
+</html>
