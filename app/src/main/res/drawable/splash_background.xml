@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/brand_dark" />
+    <!-- الشعار (مرفوع قليلاً لإفساح مكان للاسم) -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:bottom="48dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_logo" />
+    <!-- اسم المتجر -->
+    <item
+        android:width="150dp"
+        android:height="30dp"
+        android:top="112dp"
+        android:gravity="center"
+        android:drawable="@drawable/splash_wordmark" />
+</layer-list>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SecureBook</string>
+    <string name="offline_title">لا يوجد اتصال بالإنترنت</string>
+    <string name="offline_msg">تحقق من الاتصال ثم اسحب للأسفل أو اضغط إعادة المحاولة</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="download_started">بدأ التحميل…</string>
+    <string name="webview_old_title">متصفح النظام قديم</string>
+    <string name="webview_old_msg">إصدار Android System WebView على هاتفك (%1$d) قديم، وقد لا تعمل بعض أزرار الموقع مثل التصفية والبحث. حدّثه من متجر Play ثم أعد فتح التطبيق.</string>
+    <string name="update_now">تحديث الآن</string>
+    <string name="later">لاحقاً</string>
+    <string name="file_saved">تم حفظ الملف في مجلد التنزيلات</string>
+    <string name="file_saved_app">تم حفظ الملف في مجلد التطبيق</string>
+    <string name="file_failed">تعذر حفظ الملف</string>
+</resources>
