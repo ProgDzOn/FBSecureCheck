@@ -251,6 +251,34 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
  html[dir=ltr] .fab{left:auto;right:18px}
  html[dir=ltr] .toast{left:12px;right:12px;border-left:0}
 }
+
+.pro-btn{background:linear-gradient(135deg,#f5a524,#ffcf5a);color:#4a2f00;box-shadow:0 8px 18px #f5a52440}
+body.is-pro .pro-btn{background:#e5f7ef;color:#0f8a63;box-shadow:none}
+[data-pro-only]:after{display:none}
+body:not(.is-pro) [data-pro-only]:after{display:inline-block;content:"PRO";font-size:10px;font-weight:800;background:linear-gradient(135deg,#f5a524,#ffcf5a);color:#4a2f00;padding:2px 6px;border-radius:6px;margin-inline-start:2px}
+.pro-banner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(120deg,#2b1a5e,#6b3fd1 60%,#f5a524);color:#fff;border-radius:22px;padding:18px 22px;margin-bottom:22px;box-shadow:0 16px 36px #6b3fd133;animation:rise .65s .1s backwards}
+.pb-ic{width:48px;height:48px;border-radius:16px;background:#ffffff26;display:grid;place-items:center;font-size:24px}
+.pb-tx{flex:1;min-width:200px;display:grid;gap:2px}.pb-tx span{font-size:14px;color:#ece6ff}
+body.is-pro .pro-banner{display:none}
+.pro-head{background:linear-gradient(135deg,#0b1530,#173a9a);color:#fff;text-align:center;padding:24px 22px;position:relative}
+.pro-head .icon-btn{position:absolute;top:14px;inset-inline-start:14px;background:#ffffff1f;color:#fff;border-color:#ffffff33}
+.pro-crown{width:58px;height:58px;margin:0 auto 10px;border-radius:20px;background:linear-gradient(135deg,#f5a524,#ffcf5a);color:#4a2f00;display:grid;place-items:center;font-size:28px}
+.pro-head h3{margin:0;font-size:20px}.pro-head p{margin:4px 0 0;color:#b9c7e2;font-size:14px}
+.price{text-align:center;margin:4px 0 14px}.price strong{display:block;font-size:42px;font-weight:800;letter-spacing:-1px}.price span{color:var(--muted);font-size:14px}
+.feat{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}.feat li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.feat .i{color:var(--green);background:#e5f7ef;border-radius:8px;padding:4px;width:26px;height:26px}
+.pay{width:100%;justify-content:center;padding:15px;font-size:16px}.pay:disabled{opacity:.6}
+.fine{text-align:center;color:var(--muted);font-size:13px;margin:10px 0 0}
+.restore{margin-top:14px;font-size:14px}.restore summary{cursor:pointer;color:var(--blue);font-weight:600}
+.rs{display:flex;gap:8px;margin-top:10px}.rs input{flex:1;min-width:0;border:1px solid var(--line);background:#f8faff;border-radius:12px;padding:12px;color:var(--text);outline:none}
+.pro-active{display:none;text-align:center}
+.pro-active .ok{width:60px;height:60px;border-radius:50%;background:#e5f7ef;color:var(--green);display:grid;place-items:center;margin:0 auto 12px;font-size:30px}
+.pro-active p{color:var(--muted);font-size:14px}
+.pro-active code{display:block;word-break:break-all;background:#f1f5fb;border-radius:12px;padding:12px;font-size:13px;margin-top:6px;user-select:all}
+body.is-pro .pro-free{display:none}body.is-pro .pro-active{display:block}
+[data-theme=dark] .rs input,[data-theme=dark] .pro-active code{background:#0d1731;color:var(--text);border-color:var(--line)}
+[data-theme=dark] .feat .i,[data-theme=dark] .pro-active .ok{background:#0f3a30;color:#3fd4a0}
+@media(max-width:720px){.pro-btn{padding:0;width:40px;height:40px;justify-content:center;border-radius:13px}.pro-btn span{display:none}}
 </style>
 </head>
 <body>
@@ -274,6 +302,8 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.5"/></symbol>
  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+ <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></symbol>
+ <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></symbol>
  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
@@ -294,7 +324,7 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
  <main class="main">
   <div class="topbar">
    <div class="tb-l"><button class="icon-btn tbtn burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button><svg class="logo mlogo"><use href="#logo"/></svg><div><h2>مركز متابعة الأمان</h2><p id="todayTxt">إدارة ومراجعة الأجهزة المسجلة يدوياً</p></div></div>
-   <div class="top-actions"><span class="ver">الإصدار 3.0</span><div class="lang"><button class="icon-btn tbtn" id="langBtn" aria-label="Language"><svg class="i"><use href="#i-globe"/></svg></button><div class="lang-menu" id="langMenu"><button data-lang="ar">العربية</button><button data-lang="en">English</button><button data-lang="fr">Français</button></div></div><button class="icon-btn tbtn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي"><svg class="i"><use id="themeUse" href="#i-moon"/></svg></button><div class="avatar">S</div></div>
+   <div class="top-actions"><span class="ver">الإصدار 3.0</span><button class="btn pro-btn" id="proBtn" onclick="openPro()"><svg class="i"><use href="#i-crown"/></svg><span id="proBtnTxt">تفعيل Pro</span></button><div class="lang"><button class="icon-btn tbtn" id="langBtn" aria-label="Language"><svg class="i"><use href="#i-globe"/></svg></button><div class="lang-menu" id="langMenu"><button data-lang="ar">العربية</button><button data-lang="en">English</button><button data-lang="fr">Français</button></div></div><button class="icon-btn tbtn" id="themeBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي" aria-label="تبديل الوضع الليلي"><svg class="i"><use id="themeUse" href="#i-moon"/></svg></button><div class="avatar">S</div></div>
   </div>
   <div class="content">
    <section class="hero">
@@ -303,13 +333,14 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
      <p>تابع مراجعات أمان حسابك ونظّم الأجهزة التي تحققت منها في لوحة واحدة واضحة.</p>
      <div class="actions">
       <button class="btn dark" onclick="openModal()"><svg class="i"><use href="#i-plus"/></svg> إضافة جهاز</button>
-      <button class="btn light" onclick="exportExcel()"><svg class="i"><use href="#i-download"/></svg> تصدير Excel</button>
-      <button class="btn light" onclick="printReport()"><svg class="i"><use href="#i-file"/></svg> تقرير PDF</button>
+      <button class="btn light" onclick="exportExcel()" data-pro-only><svg class="i"><use href="#i-download"/></svg> تصدير Excel</button>
+      <button class="btn light" onclick="printReport()" data-pro-only><svg class="i"><use href="#i-file"/></svg> تقرير PDF</button>
      </div>
     </div>
     <div class="score"><div class="ring" id="ring"><span id="scoreTxt">0%</span></div><div><small>مؤشر الأجهزة الموثوقة</small><b id="scoreLbl">لا توجد بيانات</b></div></div>
    </section>
    <div class="notice"><svg class="i"><use href="#i-info"/></svg><div><strong>تنبيه:</strong> لا يستطيع SecureBook قراءة جلسات Facebook تلقائياً. افتح مركز الحسابات الرسمي لمراجعة الأجهزة، ثم دوّن المعلومات هنا. لا تدخل كلمة المرور أو رموز التحقق في هذا التطبيق.</div></div>
+   <section class="pro-banner" id="proBanner"><div class="pb-ic"><svg class="i"><use href="#i-crown"/></svg></div><div class="pb-tx"><b>فعّل جميع الخدمات بـ 10 دج فقط</b><span>تصدير Excel وتقارير PDF ونسخ احتياطي وعدد أجهزة غير محدود، بدفعة واحدة.</span></div><button class="btn dark" onclick="openPro()">تفعيل الآن</button></section>
    <section class="stats">
     <div class="stat"><div class="stat-top"><span>إجمالي الأجهزة المسجلة</span><span class="stat-icon blue-bg"><svg class="i"><use href="#i-device"/></svg></span></div><strong id="totalCount">0</strong><small>في سجل المراجعة المحلي</small></div>
     <div class="stat"><div class="stat-top"><span>أجهزة موثوقة</span><span class="stat-icon green-bg"><svg class="i"><use href="#i-check"/></svg></span></div><strong id="trustedCount">0</strong><small>تم التحقق منها</small></div>
@@ -343,8 +374,8 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
      <section class="panel no-print">
       <div class="panel-head"><div><h3><svg class="i"><use href="#i-db"/></svg> النسخ الاحتياطي</h3><p>احتفظ بنسخة من سجل المراجعة</p></div></div>
       <div class="panel-body" style="display:flex;gap:8px;flex-wrap:wrap">
-       <button class="btn light" onclick="backupJSON()"><svg class="i"><use href="#i-download"/></svg> تصدير نسخة JSON</button>
-       <button class="btn outline" onclick="document.getElementById('importFile').click()"><svg class="i"><use href="#i-upload"/></svg> استيراد نسخة</button>
+       <button class="btn light" onclick="backupJSON()" data-pro-only><svg class="i"><use href="#i-download"/></svg> تصدير نسخة JSON</button>
+       <button class="btn outline" onclick="importPick()" data-pro-only><svg class="i"><use href="#i-upload"/></svg> استيراد نسخة</button>
        <input id="importFile" type="file" accept=".json,application/json" hidden onchange="importJSON(event)">
       </div>
      </section>
@@ -372,6 +403,7 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
   <button data-t="devicesPanel"><svg class="i"><use href="#i-device"/></svg> سجل الأجهزة</button>
   <button data-t="timelinePanel"><svg class="i"><use href="#i-clock"/></svg> سجل المراجعات</button>
   <button data-t="add"><svg class="i"><use href="#i-plus"/></svg> إضافة جهاز</button>
+  <button onclick="openPro()"><svg class="i"><use href="#i-crown"/></svg> تفعيل Pro</button>
   <div class="dr-lang"><button data-lang="ar">العربية</button><button data-lang="en">English</button><button data-lang="fr">Français</button></div>
   <div class="dr-sep"></div>
   <button onclick="toggleTheme()"><svg class="i"><use href="#i-moon"/></svg> الوضع الليلي <span class="sw"></span></button>
@@ -399,6 +431,18 @@ html[dir=ltr] .sw:after{right:auto;left:3px}html[dir=ltr][data-theme=dark] .sw:a
   </form>
  </div>
 </div>
+<div class="modal-backdrop" id="proBackdrop" onclick="if(event.target===this)closeProModal()"><div class="modal pro-modal">
+ <div class="pro-head"><button class="icon-btn" onclick="closeProModal()" aria-label="X"><svg class="i"><use href="#i-x"/></svg></button><div class="pro-crown"><svg class="i"><use href="#i-crown"/></svg></div><h3>SecureBook Pro</h3><p>الخدمة الاحترافية</p></div>
+ <div class="modal-body">
+  <div class="pro-free">
+   <div class="price"><strong>10 دج</strong><span>دفعة واحدة · تفعيل دائم</span></div>
+   <ul class="feat"><li><svg class="i"><use href="#i-check"/></svg><span>تصدير البيانات إلى Excel</span></li><li><svg class="i"><use href="#i-check"/></svg><span>تقارير PDF للطباعة</span></li><li><svg class="i"><use href="#i-check"/></svg><span>نسخ احتياطي واستعادة JSON</span></li><li><svg class="i"><use href="#i-check"/></svg><span>عدد غير محدود من الأجهزة</span></li></ul>
+   <button class="btn primary pay" id="payBtn" onclick="startPay()"><svg class="i"><use href="#i-card"/></svg> ادفع 10 دج بالبطاقة (CIB / الذهبية)</button>
+   <p class="fine">الدفع عبر بوابة آمنة، ولا نحفظ بيانات بطاقتك.</p>
+   <details class="restore"><summary>لديك كود تفعيل؟ استعده هنا</summary><div class="rs"><input id="proCode" placeholder="كود التفعيل" dir="ltr" autocomplete="off"><button class="btn light" onclick="restorePro()">استعادة</button></div></details>
+  </div>
+  <div class="pro-active"><div class="ok"><svg class="i"><use href="#i-check"/></svg></div><b>تم تفعيل جميع الخدمات</b><p>احفظ كود التفعيل لاستعادته على جهاز آخر:</p><code id="proMyCode" dir="ltr"></code></div>
+ </div></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -408,6 +452,7 @@ let LANG='ar';try{LANG=localStorage.getItem('securebook_lang')||'ar'}catch(e){}
 if(!['ar','en','fr'].includes(LANG))LANG='ar';
 const LOCS={ar:'ar-DZ',en:'en-GB',fr:'fr-FR'},LOC=()=>LOCS[LANG],I18N={};
 [["SecureBook | لوحة أمان الحساب","SecureBook | Account Security Dashboard","SecureBook | Tableau de bord de sécurité"],["لوحة التحكم","Dashboard","Tableau de bord"],["سجل الأجهزة","Device log","Journal des appareils"],["المراجعات","Reviews","Révisions"],["إضافة","Add","Ajouter"],["سجل المراجعات","Review log","Journal des révisions"],["إضافة جهاز","Add device","Ajouter un appareil"],["القائمة الرئيسية","Main menu","Menu principal"],["الخصوصية أولاً","Privacy first","La confidentialité d’abord"],["بياناتك محفوظة محلياً في هذا المتصفح. لا نطلب كلمة مرور Facebook أو رموز التحقق.","Your data is stored locally in this browser. We never ask for your Facebook password or verification codes.","Vos données sont enregistrées localement dans ce navigateur. Nous ne demandons jamais votre mot de passe Facebook ni vos codes de vérification."],["مركز متابعة الأمان","Security Monitoring Center","Centre de suivi de la sécurité"],["إدارة ومراجعة الأجهزة المسجلة يدوياً","Manage and review manually logged devices","Gérez et vérifiez les appareils saisis manuellement"],["إدارة الأجهزة المسجلة","Manage logged devices","Gérer les appareils enregistrés"],["الإصدار 3.0","Version 3.0","Version 3.0"],["مرحباً بك في SecureBook","Welcome to SecureBook","Bienvenue sur SecureBook"],["تابع مراجعات أمان حسابك ونظّم الأجهزة التي تحققت منها في لوحة واحدة واضحة.","Track your account security reviews and organize the devices you have verified in one clear dashboard.","Suivez les vérifications de sécurité de votre compte et organisez les appareils contrôlés dans un seul tableau de bord clair."],["تصدير Excel","Export Excel","Exporter Excel"],["تقرير PDF","PDF report","Rapport PDF"],["مؤشر الأجهزة الموثوقة","Trusted devices index","Indice des appareils fiables"],["لا توجد بيانات","No data","Aucune donnée"],["وضع ممتاز","Excellent","Excellent"],["يحتاج متابعة","Needs follow-up","À surveiller"],["يحتاج مراجعة عاجلة","Needs urgent review","Révision urgente requise"],["تنبيه:","Notice:","Attention :"],["لا يستطيع SecureBook قراءة جلسات Facebook تلقائياً. افتح مركز الحسابات الرسمي لمراجعة الأجهزة، ثم دوّن المعلومات هنا. لا تدخل كلمة المرور أو رموز التحقق في هذا التطبيق.","SecureBook cannot read your Facebook sessions automatically. Open the official Accounts Center to review your devices, then note the details here. Never enter your password or verification codes in this app.","SecureBook ne peut pas lire automatiquement vos sessions Facebook. Ouvrez le Centre de comptes officiel pour vérifier vos appareils, puis notez les informations ici. N’entrez jamais votre mot de passe ni vos codes de vérification dans cette application."],["إجمالي الأجهزة المسجلة","Total logged devices","Total des appareils"],["في سجل المراجعة المحلي","In the local review log","Dans le journal local"],["أجهزة موثوقة","Trusted devices","Appareils fiables"],["تم التحقق منها","Verified","Vérifiés"],["تحتاج مراجعة","Need review","À vérifier"],["تحتاج إلى تحقق إضافي","Need extra verification","Vérification supplémentaire requise"],["أجهزة غير معروفة","Unknown devices","Appareils inconnus"],["تحقق منها عبر Facebook","Check them via Facebook","À contrôler via Facebook"],["الأجهزة التي أضفتها يدوياً بعد مراجعة حسابك","Devices you added manually after reviewing your account","Appareils ajoutés manuellement après la vérification de votre compte"],["جديد","New","Nouveau"],["ابحث باسم الجهاز أو الموقع...","Search by device name or location...","Rechercher par appareil ou lieu..."],["كل الحالات","All statuses","Tous les statuts"],["موثوق","Trusted","Fiable"],["يحتاج مراجعة","Needs review","À vérifier"],["غير معروف","Unknown","Inconnu"],["الجهاز","Device","Appareil"],["الموقع","Location","Lieu"],["آخر نشاط","Last activity","Dernière activité"],["الحالة","Status","Statut"],["إجراءات","Actions","Actions"],["لا توجد أجهزة بعد. أضف أول جهاز بعد مراجعة جلسات حسابك.","No devices yet. Add your first device after reviewing your account sessions.","Aucun appareil pour l’instant. Ajoutez le premier après avoir vérifié vos sessions."],["آخر الأنشطة المسجلة داخل التطبيق","Latest activity recorded in the app","Dernières activités enregistrées dans l’application"],["لا توجد مراجعات مسجلة بعد.","No reviews recorded yet.","Aucune révision enregistrée."],["مركز الأمان الرسمي","Official Security Center","Centre de sécurité officiel"],["روابط Facebook الرسمية","Official Facebook links","Liens officiels Facebook"],["الأجهزة ومواقع تسجيل الدخول","Devices and login locations","Appareils et lieux de connexion"],["راجع الجلسات والأجهزة من مركز حسابات Meta.","Review sessions and devices from Meta Accounts Center.","Vérifiez les sessions et appareils depuis le Centre de comptes Meta."],["فتح نشاط تسجيل الدخول","Open login activity","Ouvrir l’activité de connexion"],["نشاط تسجيل الدخول","Login activity","Activité de connexion"],["كلمة المرور والمصادقة الثنائية","Password and two-factor authentication","Mot de passe et double authentification"],["استخدم كلمة مرور فريدة وفعّل المصادقة الثنائية.","Use a unique password and enable two-factor authentication.","Utilisez un mot de passe unique et activez la double authentification."],["إعدادات الأمان","Security settings","Paramètres de sécurité"],["النسخ الاحتياطي","Backup","Sauvegarde"],["احتفظ بنسخة من سجل المراجعة","Keep a copy of your review log","Conservez une copie de votre journal"],["تصدير نسخة JSON","Export JSON backup","Exporter une sauvegarde JSON"],["استيراد نسخة","Import backup","Importer une sauvegarde"],["إضافة جهاز إلى السجل","Add a device to the log","Ajouter un appareil au journal"],["تعديل بيانات الجهاز","Edit device details","Modifier l’appareil"],["اسم الجهاز *","Device name *","Nom de l’appareil *"],["نوع الجهاز","Device type","Type d’appareil"],["الموقع *","Location *","Lieu *"],["تاريخ آخر نشاط *","Last activity date *","Date de dernière activité *"],["حالة الجهاز","Device status","Statut de l’appareil"],["ملاحظات (اختياري)","Notes (optional)","Notes (facultatif)"],["مثلاً: Samsung Galaxy","e.g. Samsung Galaxy","ex. : Samsung Galaxy"],["المدينة أو البلد","City or country","Ville ou pays"],["مثلاً: تمت مراجعته من مركز الحسابات","e.g. Reviewed from Accounts Center","ex. : vérifié depuis le Centre de comptes"],["هاتف","Phone","Téléphone"],["حاسوب","Computer","Ordinateur"],["لوحي","Tablet","Tablette"],["متصفح آخر","Other browser","Autre navigateur"],["غير محدد","Unspecified","Non précisé"],["حفظ البيانات","Save","Enregistrer"],["إلغاء","Cancel","Annuler"],["لوحة مستقلة لتنظيم ومتابعة مراجعات أمان الحسابات والأجهزة، تعمل بالكامل داخل متصفحك.","An independent dashboard to organize and track account and device security reviews, running entirely in your browser.","Un tableau de bord indépendant pour organiser et suivre les vérifications de sécurité des comptes et appareils, entièrement dans votre navigateur."],["التنقل","Navigation","Navigation"],["روابط رسمية","Official links","Liens officiels"],["الخصوصية","Privacy","Confidentialité"],["لا نجمع أي بيانات ولا نطلب كلمات المرور أو رموز التحقق. كل المعلومات محفوظة محلياً.","We collect no data and never ask for passwords or verification codes. Everything is stored locally.","Nous ne collectons aucune donnée et ne demandons jamais de mots de passe ni de codes. Tout est enregistré localement."],["SecureBook · الإصدار 3.0","SecureBook · Version 3.0","SecureBook · Version 3.0"],["تطبيق مستقل غير تابع لشركة Meta أو Facebook","Independent app, not affiliated with Meta or Facebook","Application indépendante, non affiliée à Meta ou Facebook"],["الوضع الليلي","Dark mode","Mode sombre"],["القائمة","Menu","Menu"],["تبديل الوضع الليلي","Toggle dark mode","Basculer le mode sombre"],["تعديل","Edit","Modifier"],["حذف","Delete","Supprimer"],["تم حفظ البيانات بنجاح","Saved successfully","Enregistré avec succès"],["تم حذف السجل","Record deleted","Enregistrement supprimé"],["لا توجد بيانات للتصدير","No data to export","Aucune donnée à exporter"],["تم تصدير ملف متوافق مع Excel","Excel-compatible file exported","Fichier compatible Excel exporté"],["لا توجد بيانات لإنشاء التقرير","No data to create the report","Aucune donnée pour le rapport"],["تم إنشاء النسخة الاحتياطية","Backup created","Sauvegarde créée"],["تم استيراد النسخة بنجاح","Backup imported successfully","Sauvegarde importée avec succès"],["ملف النسخة الاحتياطية غير صالح","Invalid backup file","Fichier de sauvegarde invalide"],["هل تريد حذف سجل هذا الجهاز؟","Delete this device record?","Supprimer l’enregistrement de cet appareil ?"],["سيتم استبدال السجلات الحالية بالنسخة المستوردة. متابعة؟","Current records will be replaced by the imported backup. Continue?","Les enregistrements actuels seront remplacés par la sauvegarde importée. Continuer ?"],["تعديل بيانات جهاز","Device updated","Appareil modifié"],["حذف سجل جهاز","Device record deleted","Appareil supprimé"],["إنشاء تقرير للطباعة","Print report created","Rapport d’impression créé"],["تقرير مراجعة الأجهزة","Device review report","Rapport de vérification des appareils"],["اسم الجهاز","Device name","Nom de l’appareil"],["النوع","Type","Type"],["تاريخ آخر نشاط","Last activity date","Date de dernière activité"],["ملاحظات","Notes","Notes"]].forEach(r=>I18N[r[0]]={en:r[1],fr:r[2]});
+[["تفعيل Pro","Activate Pro","Activer Pro"],["Pro مفعّل","Pro active","Pro activé"],["فعّل جميع الخدمات بـ 10 دج فقط","Unlock all services for only 10 DZD","Débloquez tous les services pour seulement 10 DA"],["تصدير Excel وتقارير PDF ونسخ احتياطي وعدد أجهزة غير محدود، بدفعة واحدة.","Excel export, PDF reports, backups and unlimited devices — one-time payment.","Export Excel, rapports PDF, sauvegardes et appareils illimités — paiement unique."],["تفعيل الآن","Activate now","Activer maintenant"],["الخدمة الاحترافية","Professional service","Service professionnel"],["10 دج","10 DZD","10 DA"],["دفعة واحدة · تفعيل دائم","One-time payment · lifetime activation","Paiement unique · activation à vie"],["تصدير البيانات إلى Excel","Export data to Excel","Exporter les données vers Excel"],["تقارير PDF للطباعة","Printable PDF reports","Rapports PDF imprimables"],["نسخ احتياطي واستعادة JSON","JSON backup and restore","Sauvegarde et restauration JSON"],["عدد غير محدود من الأجهزة","Unlimited devices","Appareils illimités"],["ادفع 10 دج بالبطاقة (CIB / الذهبية)","Pay 10 DZD with CIB / Edahabia card","Payer 10 DA par carte CIB / Edahabia"],["الدفع عبر بوابة آمنة، ولا نحفظ بيانات بطاقتك.","Payment through a secure gateway; we never store your card details.","Paiement via une passerelle sécurisée ; nous ne conservons pas vos données de carte."],["لديك كود تفعيل؟ استعده هنا","Have an activation code? Restore it here","Vous avez un code d’activation ? Restaurez-le ici"],["كود التفعيل","Activation code","Code d’activation"],["استعادة","Restore","Restaurer"],["تم تفعيل جميع الخدمات","All services are activated","Tous les services sont activés"],["احفظ كود التفعيل لاستعادته على جهاز آخر:","Save your activation code to restore it on another device:","Conservez votre code d’activation pour le restaurer sur un autre appareil :"],["تم تفعيل Pro بنجاح","Pro activated successfully","Pro activé avec succès"],["تعذر الاتصال بخدمة الدفع","Could not reach the payment service","Impossible de joindre le service de paiement"],["بوابة الدفع غير مهيأة بعد","Payment gateway is not configured yet","La passerelle de paiement n’est pas encore configurée"],["لم يتم تأكيد الدفع بعد","Payment not confirmed yet","Paiement pas encore confirmé"],["لم تكتمل عملية الدفع","Payment was not completed","Le paiement n’a pas abouti"],["كود التفعيل غير صالح","Invalid activation code","Code d’activation invalide"],["هذه الميزة ضمن خدمة Pro","This feature is part of Pro","Cette fonction fait partie de Pro"],["وصلت إلى حد الأجهزة المجانية (5 أجهزة). فعّل Pro للمزيد.","You reached the free limit (5 devices). Activate Pro for more.","Limite gratuite atteinte (5 appareils). Activez Pro pour en ajouter."],["جاري التحقق من الدفع…","Verifying payment…","Vérification du paiement…"]].forEach(r=>I18N[r[0]]={en:r[1],fr:r[2]});
 function T(ar){const e=I18N[ar];return LANG!=='ar'&&e?e[LANG]:ar}
 
 let devices=readStore(STORAGE_KEY,[]);
@@ -614,6 +659,59 @@ function setLang(l){
 document.getElementById('langBtn').onclick=e=>{e.stopPropagation();langMenu.classList.toggle('show')};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(b){setLang(b.dataset.lang);return}if(!e.target.closest('.lang'))closeLangMenu()});
 setLang(LANG);
+
+// ===== Pro / الدفع الإلكتروني =====
+const PAY_API='';          // رابط مجلد الخادم، مثال: https://example.com/securebook-pay (بدون / في النهاية)
+const FREE_LIMIT=5;
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function cid(){let c='';try{c=localStorage.getItem('securebook_cid')||''}catch(e){}
+ if(!/^[a-f0-9]{32}$/.test(c)){c=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');try{localStorage.setItem('securebook_cid',c)}catch(e){}}return c}
+function isPro(){try{return localStorage.getItem('securebook_pro')==='1'}catch(e){return false}}
+function applyPro(){const on=isPro();document.body.classList.toggle('is-pro',on);
+ document.getElementById('proBtnTxt').textContent=on?'Pro مفعّل':'تفعيل Pro';
+ document.getElementById('proMyCode').textContent=cid().replace(/(.{4})(?=.)/g,'$1-')}
+function setPro(){try{localStorage.setItem('securebook_pro','1');localStorage.removeItem('securebook_pay_pending')}catch(e){}applyPro()}
+function openPro(){closeDrawer();document.getElementById('proBackdrop').classList.add('show')}
+function closeProModal(){document.getElementById('proBackdrop').classList.remove('show')}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeProModal()});
+function requirePro(){if(isPro())return true;toast('هذه الميزة ضمن خدمة Pro');openPro();return false}
+function importPick(){if(requirePro())document.getElementById('importFile').click()}
+async function api(path,opt){const r=await fetch(PAY_API+path,opt);if(!r.ok)throw new Error(r.status);return r.json()}
+async function checkStatus(code,silent){
+ if(!PAY_API){if(!silent)toast('بوابة الدفع غير مهيأة بعد');return false}
+ try{const j=await api('/status.php?cid='+(code||cid()));
+  if(j.paid){if(code)try{localStorage.setItem('securebook_cid',code)}catch(e){}setPro();return true}
+ }catch(e){if(!silent)toast('تعذر الاتصال بخدمة الدفع')}
+ return false}
+async function pollPay(n){toast('جاري التحقق من الدفع…');
+ for(let i=0;i<n;i++){if(await checkStatus(null,true)){toast('تم تفعيل Pro بنجاح');openPro();return}await sleep(2500)}
+ toast('لم يتم تأكيد الدفع بعد')}
+async function restorePro(){
+ const code=document.getElementById('proCode').value.replace(/[^a-f0-9]/gi,'').toLowerCase();
+ if(!/^[a-f0-9]{32}$/.test(code)){toast('كود التفعيل غير صالح');return}
+ if(await checkStatus(code,false))toast('تم تفعيل Pro بنجاح');else if(PAY_API)toast('كود التفعيل غير صالح')}
+async function startPay(){
+ if(!PAY_API){toast('بوابة الدفع غير مهيأة بعد');return}
+ const b=document.getElementById('payBtn');b.disabled=true;
+ try{
+  const j=await api('/create.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cid:cid(),lang:LANG})});
+  if(j.paid){setPro();toast('تم تفعيل Pro بنجاح');b.disabled=false;return}
+  const u=new URL(j.checkout_url);
+  if(u.protocol!=='https:'||!/(^|\.)chargily\.(dz|net|com)$/.test(u.hostname))throw new Error('url');
+  try{localStorage.setItem('securebook_pay_pending','1')}catch(e){}
+  location.href=u.href;
+ }catch(e){toast('تعذر الاتصال بخدمة الدفع')}
+ b.disabled=false}
+['exportExcel','printReport','backupJSON'].forEach(n=>{const f=window[n];window[n]=function(){if(requirePro())return f.apply(this,arguments)}});
+const _openModal=openModal;
+openModal=function(id){if(!id&&!isPro()&&devices.length>=FREE_LIMIT){toast('وصلت إلى حد الأجهزة المجانية (5 أجهزة). فعّل Pro للمزيد.');openPro();return}return _openModal(id||null)};
+applyPro();
+(function(){const q=new URLSearchParams(location.search),r=q.get('paid');
+ if(r!==null)history.replaceState(null,'',location.pathname+location.hash);
+ if(r==='1')pollPay(8);else if(r==='0')toast('لم تكتمل عملية الدفع');
+ else{try{if(localStorage.getItem('securebook_pay_pending')==='1'&&!isPro())pollPay(3)}catch(e){}}
+ document.addEventListener('visibilitychange',()=>{try{if(!document.hidden&&localStorage.getItem('securebook_pay_pending')==='1'&&!isPro())pollPay(6)}catch(e){}});
+})();
 function setTheme(t){
  document.documentElement.dataset.theme=t;
  try{localStorage.setItem('securebook_theme',t)}catch(e){}
